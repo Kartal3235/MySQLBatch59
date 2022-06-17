@@ -146,9 +146,9 @@ select * from kelimeler;
 select * from kelimeler where regexp_like(kelime, 'ot|at','c');
 
 -- SORU17: İçerisinde ‘ot’ veya ‘at’ bulunan kelimeleri büyük-küçük harfe dikkat etmeksizin listeleyeniz
-select * from kelimele where regexp_like(kelime,'ot|at','i');
+select * from kelimeler where regexp_like(kelime,'ot|at','i');
 -- i kullanmamıza gerek yok, default olarak i var zaten
-select * from kelimele where regexp_like(kelime,'ot|at');
+select * from kelimeler where regexp_like(kelime,'ot|at');
 
 -- SORU18: ‘ho’ veya ‘hi’ ile başlayan kelimeleri büyük-küçük harfe dikkat etmeksizin listeleyeniz
 -- Başlangıcı göstermek için ^ karakteri kullanılır.
@@ -171,12 +171,17 @@ select * from kelimeler where regexp_like(kelime,'h[a|i]t');
 select * from kelimeler where regexp_like(kelime, 'i|e|m');
 select * from kelimeler where regexp_like(kelime, '[mie]');
 -- SORU22: a veya s ile başlayan kelimelerin tüm bilgilerini listeleyiniz.
-
+select * from kelimeler where regexp_like(kelime,'^a|^s');
 
 -- SORU23: içerisinde en az 2 adet oo barıdıran kelimelerin tüm bilgilerini listeleyiniz.
+select * from kelimeler where regexp_like(kelime,'[o][o]');
+select * from kelimeler where regexp_like(kelime,'[0]{2}');
 -- SORU24: içerisinde en az 4 adet oooo barıdıran kelimelerin tüm bilgilerini listeleyiniz.
--- SORU25: ilk harfi s veya b , 3. harfi l olan ve 5 harfli olan kelimelerin küçük harfe dikkat ederek listeleyiniz.
+select * from kelimeler where regexp_like(kelime,'oooo');
+select * from kelimeler where regexp_like(kelime,'[0]{4}');
 
+-- SORU25: ilk harfi s veya b , 3. harfi l olan ve 5 harfli olan kelimelerin küçük harfe dikkat ederek listeleyiniz.
+select * from kelimeler where regexp_like(kelime,'^s|b^%l%%','c');
 
 
 

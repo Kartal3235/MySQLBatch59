@@ -50,33 +50,34 @@ select * from ogrenciler;
 ===============================================================================*/     
 
 -- SORU1: id'si 124 olan ogrenciyi siliniz.
-
+DELETE FROM ogrenciler WHERE id= 124;
  
  
 -- SORU2: ismi Kemal Yasa olan satırını siliniz.
-
+DELETE FROM ogrenciler WHERE isim='Kemal Yasa';
      
 
 -- SORU3: ismi Nesibe Yilmaz veya Mustafa Bak olan kayıtları silelim.
-
+DELETE FROM ogrenciler WHERE isim='Nesibe Yimaz' or isim='Mustafa Bak';
          
 
 -- SORU4: İsmi Ali Can ve id'si 123 olan kaydı siliniz.
-
-  
+DELETE FROM ogrenciler WHERE isim ='Ai Can' and id= 123;
+select * from ogrenciler;
 
 -- SORU5: id 'si 126'dan büyük olan kayıtları silelim.
-
+delete from ogrenciler where id>126;
 
     
 -- SORU6: id'si 123, 125 veya 126 olanları silelim.
-
+delete from ogrenciler where id in(123,125,126);
     
     
 -- SORU7:  TABLODAKİ TÜM KAYITLARI SİLELİM..
 
-   
+   delete from ogrenciler;
 
+    drop table ogrenciler; -- tabloyu siler
 
 CREATE TABLE ogrenciler
 (
@@ -94,6 +95,7 @@ INSERT INTO ogrenciler VALUES(127, 'Mustafa Bak', 'Can',99);
 INSERT INTO ogrenciler VALUES(127, 'Mustafa Bak', 'Ali', 99);
 savepoint abc;
 
+SET autocommit=0;
 -- savepoint komutuyla tabloları yanlışlıkla silinmeye karşı korumaya almış oluyoruz 
 
 -- savepoint sikintisi varsa -> SET autocommit=0; 
