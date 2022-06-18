@@ -37,7 +37,7 @@ INSERT INTO urunler VALUES(104, 1007,'Phone', 'Aslan Yılmaz');
 SELECT * FROM urunler;
 
 -- SORU1: İki tabloyu birleştirerek listeleyiniz.
-select * from tedarikciler,urunler where tedarikciler.vergi_no=urunler.ted_vergino;
+select * from tedarikciler,urunler where tedarikciler.vergi_no=urunler.ted_vergino;-- ortak numara bulup eşitliyoruz
 
 
 -- UPDATE - SET     

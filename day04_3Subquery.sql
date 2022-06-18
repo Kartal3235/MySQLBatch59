@@ -38,17 +38,22 @@ select * from markalar;
 
 -- SORU1: calisan sayisi 15.000’den cok olan markalarin isimlerini ve bu markada calisanlarin isimlerini ve maaşlarini listeleyin.
 
+select isim,maas,isyeri from calisanlar where isyeri;
 
+select marka_isim from markalar where calisan_sayisi > 15000;
+
+select isim,maas,isyeri from calisanlar where isyeri in(select marka_isim from markalar where calisan_sayisi > 15000);
+-- yazdığımız bu kod su 2 kodun birleştirilmiş halidir
 
 -- SORU2: marka_id’si 101’den büyük olan marka çalişanlarinin isim, maaş ve şehirlerini listeleyiniz.
 
-
+select isim,maas,sehir from calisanlar where isyeri in(select marka_ismi from markalar where marka_id>101);
 
 -- SORU3: Ankara’da calisani olan markalarin marka id'lerini ve calisan sayilarini listeleyiniz.
 
-
-
-
+select marka_id,calisan_sayisi from markalar 
+where marka_ismi 
+in(select sehir from calısanlar where isyeri='Ankara');
 
 
   
@@ -59,20 +64,23 @@ select * from markalar;
 ==============================================================================*/   
       
 -- SORU4: Her markanin ismini, calisan sayisini ve o markaya ait calisanlarin toplam maaşini listeleyen bir Sorgu yaziniz.
-
+select marka_isim,calisan_sayisi,(select sum (maas) from calisanlar where marka_isim=isyeri) 
+as toplam_mas from markalar;
 
  
 -- SORU5: Her markanin ismini, calisan sayisini ve o markaya ait calisanlarin ortalama maaşini listeleyen bir Sorgu yaziniz.
-
-
+select marka_isim,calisan_sayisi,(select round(avg(maas)) from calisanlar where marka_isim=isyeri) as ortalama_maas from markalar;
+-- round virgülden sonraki sayıları yuvarlar
  
 -- SORU6: Her markanin ismini, calisan sayisini ve o markaya ait calisanlarin maksimum ve minumum maaşini listeleyen bir Sorgu yaziniz.
 
-
+select marka_ismi, calisan_sayisi,(select max(maas) from calisanlar where marka_ismi=isyeri ) as max_maas from markalar;
+select marka_ismi, calisan_sayisi,(select min(maas)from calisanlar where marka_ismi_isyeri) as min_maas from markalar; 
 -- max ve min maas bir arada olsun
 
 
- 
 -- SORU7: Her markanin id’sini, ismini ve toplam kaç şehirde bulunduğunu listeleyen bir SORGU yaziniz.
 
+select marka_id, marka_isim,(select count(sehir) from calisanlar where marka_isim=isyeri) as sehir_sayisi from markalar;
+-- (x) select count(sehir) from calisanlar where marka_isim=isyeri
 -- count(sehir) sehirleri sayar
