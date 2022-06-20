@@ -60,19 +60,31 @@ select * from nisan;
   URUN_ID’lerini ve aynı zamanda bu ürünleri MART ayında alan
   MUSTERI_ISIM 'lerini listeleyen bir sorgu yazınız. 
  -----------------------------------------------------------------------------*/        
-select urun_id,musteri_isim from mart where exists (select urun_id from nisan where mart.urun_id=nisan.urun_id);
+select urun_id,musteri_isim from mart 
+where exists 
+(select urun_id from nisan where mart.urun_id=nisan.urun_id);
     
 /* -----------------------------------------------------------------------------
 SORU2: Her iki ayda birden satılan ürünlerin URUN_ISIM'lerini ve bu ürünleri
 NİSAN ayında satın alan MUSTERI_ISIM'lerini listeleyen bir sorgu yazınız. 
 -----------------------------------------------------------------------------*/ 
-
+select urun_isim, musteri_isim
+from nisan as nisan_tablo
+where exists
+(select urun_isim
+from mart as mart_tablo
+where nisan_tablo.urun_isim=mart_tablo.urun_isim);
 
     
 /* SORU3: Her iki ayda ortak satilmayan ürünlerin URUN_ISIM'lerini ve   bu ürünleri
   NİSAN ayında satın alan MUSTERI_ISIM'lerini listeleyen bir sorgu yazınız. 
  -----------------------------------------------------------------------------*/
-
+select urun_isim, musteri_isim
+from nisan as nisan_tablo
+where not exists
+(select urun_isim
+from mart as mart_tablo
+where nisan_tablo.urun_isim=mart_tablo.urun_isim);
 
 
 

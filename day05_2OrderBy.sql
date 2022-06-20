@@ -35,19 +35,21 @@ INSERT INTO kisiler VALUES (12, 665458901, 'Veli','Yildiz',8000,'Istanbul');
 select * from kisiler;
     
 -- SORU1: kisiler tablosunu adres'e göre sıralayarak sorgulayınız.
-
+select * from kisiler order by adres;
+select * from kisiler order by adres asc;
+-- asc kullanmamıza gerek yok, default olarak asc var zaten
  
 -- SORU2: kisiler tablosunu maaşı büyükten küçüğe göre sırala.
-
+select * from kisiler order by maas desc;
 
 
 -- SORU3: ismi Mine olanları, maas a göre AZALAN sırada sorgulayınız.
-
+select * from kisiler where isim='Mine' order by maas desc;
 
 
 -- SORU4: soyismi 'i Bulut olanları maas sıralı olarak sorgulayınız.
 
-
+select * from kisiler where soyisim='Bulut' order by maas desc;
 
 -- ***************************** LİMİT **********************************
 
@@ -55,13 +57,20 @@ select * from kisiler;
 
 -- listeden ilk 10 veriyi getir
 
-
+select  * from kisiler limit 10;
 -- 10. veriden sonraki 2 veriyi al (11 ve 12)
-
+select * from kisiler limit 10,12;
+select * from kisiler limit 10,2;
 
 
 -- MAAŞ'ı en yüksek 3 kişinin bilgilerini listeleyen sorguyu yazınız.
-
+select * from kisiler order by maas desc limit 3;
 
 
 -- MAAŞ'a göre sıralamada 4. 5.  6. kişilerin bilgilerini listeleyen sorguyu yazınız.
+select * from kisiler order by maas desc limit 3,3;
+-- ilk 3 rakamı 4.değeri al demek
+-- ikinici 3 rakamda 4,5,6' yı al demek
+
+-- MAAŞ'a göre sıralamada 7. 8.  9. kişilerin bilgilerini listeleyen sorguyu yazınız.
+select * from kisiler order by maas desc limit 6,3;
