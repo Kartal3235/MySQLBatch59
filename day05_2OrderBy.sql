@@ -67,6 +67,8 @@ select * from kisiler limit 10,2;
 select * from kisiler order by maas desc limit 3;
 
 
+
+
 -- MAAŞ'a göre sıralamada 4. 5.  6. kişilerin bilgilerini listeleyen sorguyu yazınız.
 select * from kisiler order by maas desc limit 3,3;
 -- ilk 3 rakamı 4.değeri al demek
