@@ -46,9 +46,9 @@ SELECT * FROM personel;
   alinan sehirleri gosteren sorguyu yaziniz
 ------------------------------------------------------------------------------*/
 
-
-
-
+select isim,sehir,maas from personel where maas>4000 
+union 
+select sehir,maas from personel where maas>5000;  
 
 
 /* -----------------------------------------------------------------------------
@@ -57,7 +57,9 @@ SELECT * FROM personel;
   sorguyu yaziniz.    
 ------------------------------------------------------------------------------*/  
 
-
+select maas,sehir from personel where isim='Mehmet Ozturk'
+union
+select maas,sehir from personel where sehir='Istanbul' order by maas desc;
 
 
 
@@ -66,7 +68,11 @@ SELECT * FROM personel;
 ------------------------------------------------------------------------------*/  
 
 
-
+select isim, sirket from personel where sirket='Honda'
+union
+select isim, sirket from personel where sirket='Ford'
+union
+select isim, sirket from personel where sirket='Tofas';
 
 
 /* -----------------------------------------------------------------------------
@@ -74,9 +80,9 @@ SELECT * FROM personel;
  alt alta listeleyen bir sorgu yaziniz. 
 ------------------------------------------------------------------------------*/ 
 
-
-
-
+select isim,maas,sirket from personel where maas<5000
+union
+select isim,maas,sirket from personel where sirket!='Honda';
 
 
 /* -----------------------------------------------------------------------------
@@ -84,10 +90,9 @@ SELECT * FROM personel;
   sehirlerini listeleyen sorguyu yaziniz.
 ------------------------------------------------------------------------------*/
 
-
-
-
-
+select isim,sehir from personel where isim='Mehmet Ozturk'
+union
+select isim,sehir from personel where sehir!='Istanbul';
 
 
 
@@ -116,15 +121,16 @@ select * from personel_bilgi;
   tel ve cocuk sayisini yazdirin  
 ------------------------------------------------------------------------------*/    
 
-
-
-
+select sehir as sehir_tel,maas as maas_cocuk_sayisi from personel where id=123456789
+union
+select tel,cocuk_sayisi from personel_bilgi where id=123;
 
 /* -----------------------------------------------------------------------------
   SORU7: Personel tablosundan Istanbul veya Ankara’da calisanlarin id’lerini
  ve Personel_bilgi tablosundan 2 veya 3 cocugu olanlarin id lerini sorgulayiniz.
 ------------------------------------------------------------------------------*/
 
-
-
+select id from personel where sehir in('Istanbul','Ankara')
+union
+select id from personel_bilgi where cocuk_sayisi in(2,3);
 
